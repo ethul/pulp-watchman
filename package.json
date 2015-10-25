@@ -8,7 +8,14 @@
     "name": "Eric Thul",
     "email": "thul.eric@gmail.com"
   },
+  "bin": {
+    "pulp-watchman": "./index.js"
+  },
   "files": [
     "index.js"
-  ]
+  ],
+  "dependencies": {
+    "fb-watchman": "^1.6.0",
+    "pulp": "^4.4.1"
+  }
 }
