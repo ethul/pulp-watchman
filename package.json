@@ -1,0 +1,14 @@
+{
+  "name": "pulp-watchman",
+  "version": "0.1.0",
+  "description": "Watchman for pulp",
+  "license": "MIT",
+  "repository": "ethul/pulp-watchman",
+  "author": {
+    "name": "Eric Thul",
+    "email": "thul.eric@gmail.com"
+  },
+  "files": [
+    "index.js"
+  ]
+}
