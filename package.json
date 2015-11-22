@@ -1,6 +1,6 @@
 {
   "name": "pulp-watchman",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Watchman for pulp",
   "license": "MIT",
   "repository": "ethul/pulp-watchman",
