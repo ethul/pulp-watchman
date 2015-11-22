@@ -18,6 +18,7 @@
     "pulp": "^4.4.1"
   },
   "dependencies": {
-    "fb-watchman": "^1.6.0"
+    "fb-watchman": "^1.6.0",
+    "minimist": "^1.2.0"
   }
 }
