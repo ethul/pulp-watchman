@@ -10,6 +10,8 @@ var watchman = require('fb-watchman');
 
 var minimist = require('minimist');
 
+var which = require('which');
+
 var client = new watchman.Client();
 
 var cwd = process.cwd();
@@ -88,7 +90,7 @@ function watch(watchDirectories, callback) {
 }
 
 function run() {
-  var pulp = path.join(__dirname, '..', 'pulp', 'index.js');
+  var pulp = fs.realpathSync(which.sync('pulp'));
 
   var args = process.argv.slice(2);
 

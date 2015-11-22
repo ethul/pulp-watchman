@@ -15,10 +15,11 @@
     "index.js"
   ],
   "peerDependencies": {
-    "pulp": "^4.4.1"
+    "pulp": "^5.0.0"
   },
   "dependencies": {
     "fb-watchman": "^1.6.0",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.0",
+    "which": "^1.2.0"
   }
 }
