@@ -8,11 +8,13 @@ var child = require('child_process');
 
 var watchman = require('fb-watchman');
 
+var minimist = require('minimist');
+
+var which = require('which');
+
 var client = new watchman.Client();
 
 var cwd = process.cwd();
-
-var watchDirectories =  [path.join(cwd, 'src'), path.join(cwd, 'bower_components'), path.join(cwd, 'test')];
 
 var subscriptionPrefix = 'pulp-';
 
@@ -62,7 +64,7 @@ function watchProject(watchDirectory, callback) {
   });
 }
 
-function watch(callback) {
+function watch(watchDirectories, callback) {
   client.capabilityCheck({optional:[], required:['relative_root']}, function (error, res){
     if (error) {
       console.error('Watchman capability check failed. ' + error);
@@ -88,19 +90,28 @@ function watch(callback) {
 }
 
 function run() {
-  var pulp = path.join(__dirname, 'node_modules', '.bin', 'pulp');
+  var pulp = fs.realpathSync(which.sync('pulp'));
 
   var args = process.argv.slice(2);
+
+  var argv = minimist(args);
+
+  var src = argv['src-path'] || 'src';
+
+  var dependency = argv['dependency-path'] || 'bower_components';
+
+  var test = argv['test-path'] || 'test';
+
+  var directories =  [path.join(cwd, src), path.join(cwd, dependency), path.join(cwd, test)];
 
   var proc = child.fork(pulp, args);
 
   var change = function() {
     proc.kill('SIGTERM');
-    console.log('Files have changed. Restarting...');
     proc = child.fork(pulp, args);
   };
 
-  watch(change);
+  watch(directories, change);
 };
 
 run();
