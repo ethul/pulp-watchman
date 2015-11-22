@@ -14,8 +14,10 @@
   "files": [
     "index.js"
   ],
-  "dependencies": {
-    "fb-watchman": "^1.6.0",
+  "peerDependencies": {
     "pulp": "^4.4.1"
+  },
+  "dependencies": {
+    "fb-watchman": "^1.6.0"
   }
 }
